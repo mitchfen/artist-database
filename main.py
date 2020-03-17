@@ -10,15 +10,15 @@ username = input("Please enter your mysql username: ")
 password = input("Please enter your mysql password: ")
 
 # Create objects
-dbConnector = MySQLdb.connect("localhost", username, password, dbName)
-cursor = dbConnector.cursor()
+try:
+    dbConnector = MySQLdb.connect("localhost", username, password, dbName)
+    cursor = dbConnector.cursor()
+except:
+    print("Error, Unable to connect to database")
 
 # Create the table
 #cursor.execute("DROP TABLE IF EXISTS list")
-tableCreate = """CREATE TABLE list(
-                                Artist VARCHAR(20),
-                                Date VARCHAR(20),
-                                Venue VARCHAR(20))"""
+tableCreate = """CREATE TABLE list(\nArtist VARCHAR(20),\nDate VARCHAR(20),\nVenue VARCHAR(20))"""
 
 try:
     cursor.execute(tableCreate)
