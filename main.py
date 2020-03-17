@@ -26,12 +26,13 @@ try:
 except:
     dbConnector.rollback()
 
-# Add the first entry
-entry = """INSERT INTO list(Artist, Date, Venue)
-                    VALUES ('I_o', '1/1/20', 'Venue1')"""
-
+# Add an entry
+artist = input("Artist: ")
+date = input("Date: ")
+venue = input("Venue: ")
+entry1 = "INSERT INTO list(Artist, Date, Venue)\nVALUES('" +  artist +"', '" + date + "', '" + venue + "')"
 try:
-    cursor.execute(entry)
+    cursor.execute(entry1)
     dbConnector.commit()
 except:
     dbConnector.rollback()
