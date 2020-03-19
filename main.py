@@ -1,41 +1,27 @@
-# Remember to start the MySQL daemon in Windows Services or MySQL notifier
-# On Manjaro use "sudo systemctl start mysqld.service"
-
 import os
-import MySQLdb
+import sqlite3
+from addEntry import addEntry
 
-# Get user information
-dbName = input("Please enter the name of your databse: ")
-username = input("Please enter your mysql username: ")
-password = input("Please enter your mysql password: ")
+def addEntry(conn):
+    artist = input("Artist: ")
+    date = input("Date: ")
+    venue = input("Venue: ")
 
-# Create objects
-try:
-    dbConnector = MySQLdb.connect("localhost", username, password, dbName)
-    cursor = dbConnector.cursor()
-except:
-    print("Error, Unable to connect to database")
+    sql = "INSERT INTO showTABLE (ID, Artist, Date, Venue)\nValues(NULL, '" + artist + "', '" + date + "', '" + venue + "') "
 
-# Create the table
-#cursor.execute("DROP TABLE IF EXISTS list")
-tableCreate = """CREATE TABLE list(\nArtist VARCHAR(20),\nDate VARCHAR(20),\nVenue VARCHAR(20))"""
+    conn.execute(sql)
+    conn.commit()
 
-try:
-    cursor.execute(tableCreate)
-    dbConnector.commit()
-except:
-    dbConnector.rollback()
+def connectToDatabase():
+    conn = sqlite3.connect('Shows.db')
 
-# Add an entry
-artist = input("Artist: ")
-date = input("Date: ")
-venue = input("Venue: ")
-entry1 = "INSERT INTO list(Artist, Date, Venue)\nVALUES('" +  artist +"', '" + date + "', '" + venue + "')"
-try:
-    cursor.execute(entry1)
-    dbConnector.commit()
-except:
-    dbConnector.rollback()
+    conn.execute('''CREATE TABLE IF NOT EXISTS showTable(
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    Artist  CHAR(30),
+    Date CHAR(30),
+    Venue CHAR(30));''')
+    return conn
 
-# Remember to close the database
-dbConnector.close()
+conn = connectToDatabase()
+addEntry(conn)
+conn.close()
