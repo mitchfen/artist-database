@@ -18,7 +18,7 @@ For now, just one table is created which has columns for Artist, Date, Venue.
     * `apt-get install python-tk` on Debian.
 * A program to view the db file will be helpful. [sqliteonline](https://sqliteonline.com/) or [SQLiteStudio](https://github.com/pawelsalawa/sqlitestudio/releases)
 
-### Screenshot
+## Screenshot
 
 ![broken-link](https://github.com/mitchfen/artist-database/blob/master/screenshots/screen1.png)
 
