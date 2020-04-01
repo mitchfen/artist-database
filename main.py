@@ -30,12 +30,20 @@ def addEntryFromGUI():
     # Casting to string may not be needed here but I'm used to Java/C++, leave it for now
     print(artistEntry.get())
     artist = artistEntry.get()
-    date = str(dateEntry.get())
-    venue = str(venueEntry.get())
+    date = dateEntry.get()
+    venue = venueEntry.get()
 
     sql = "INSERT INTO showTable (ID, Artist, Date, Venue)\nValues(NULL, '" + artist + "', '" + date + "', '" + venue + "') "
     conn.execute(sql)
     conn.commit()
+
+# TODO
+def editEntryFromGUI():
+    return
+
+# TODO
+def removeEntryFromGUI():
+    return
 
 def gridAllTheThings():
     artistLabel.grid(sticky= W, row=0, column=0)
@@ -44,7 +52,8 @@ def gridAllTheThings():
     dateEntry.grid(row=3, column=0)
     venueLabel.grid(sticky= W, row=4, column=0)
     venueEntry.grid(row=5, column=0)
-    addArtistButton.grid(sticky= W, row=6, column=0)
+    addButton.grid(sticky= W, row=6, column=0)
+    editButton.grid(sticky = W, row=7, column=0)
 
 ###################################################
 #   End of GUI code
@@ -79,6 +88,7 @@ def cmdPromptLoop():
 # Print the table using tabulate
 def printTableToCMD():
         cur.execute("SELECT * FROM showTable")
+        entries = []
         entries = cur.fetchall()
         print(tabulate(entries))
 
@@ -107,29 +117,30 @@ def editEntryFromCMD():
 ###################################################
 
 # MAIN PROGRAM
-entries = []
+ 
 conn = connectToDatabase()
 cur = conn.cursor()
 
-root = tk.Tk()
-root.geometry("300x200")
-root.resizable(0,0)
+mainWindow = tk.Tk()
+mainWindow.geometry("500x500")
+mainWindow.resizable(0,0)
 
-root.title("Artist-Database-helper")
+mainWindow.title("Artist-Database-helper")
 
-artistLabel = Label(root, text="Artist:", anchor="w")
-artistEntry = Entry(root, width=100, borderwidth=0)
+artistLabel = Label(mainWindow, text="Artist:")
+artistEntry = Entry(mainWindow, width=100, borderwidth=0)
 
-dateLabel = Label(root, text="Date:", anchor="w")
-dateEntry = Entry(root, width=100, borderwidth=0)
+dateLabel = Label(mainWindow, text="Date:", )
+dateEntry = Entry(mainWindow, width=100, borderwidth=0)
 
-venueLabel = Label(root, text="Venue:", anchor="w")
-venueEntry = Entry(root, width=100, borderwidth=0)
+venueLabel = Label(mainWindow, text="Venue:")
+venueEntry = Entry(mainWindow, width=100, borderwidth=0)
 
-addArtistButton = Button(root, text="Add", command=lambda: addEntryFromGUI())
+addButton = Button(mainWindow, text="Add", command=lambda: addEntryFromGUI())
+editButton = Button(mainWindow, text="Edit", command=lambda: addEntryFromGUI())
 
 gridAllTheThings()
-root.mainloop()
+mainWindow.mainloop()
 printTableToCMD()
 
 conn.close()

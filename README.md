@@ -15,7 +15,7 @@ For now, just one table is created which has columns for Artist, Date, Venue.
 * The tabulate python module: `pip install tabulate`
 * A program to view the db file will be helpful. [sqliteonline](https://sqliteonline.com/) or [SQLiteStudio](https://github.com/pawelsalawa/sqlitestudio/releases)
 
-### Screenshot
+## Screenshot
 
 ![broken-link](https://github.com/mitchfen/artist-database/blob/master/screenshots/screen1.png)
 
