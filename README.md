@@ -13,6 +13,9 @@ For now, just one table is created which has columns for Artist, Date, Venue.
 
 * You will need [sqlite3](https://sqlite.org/download.html) on your machine
 * The tabulate python module: `pip install tabulate`
+* If you are on Linux you will need to install Tkinter manually.
+    * `pacman -S python-pmw` on Arch.
+    * `apt-get install python-tk` on Debian.
 * A program to view the db file will be helpful. [sqliteonline](https://sqliteonline.com/) or [SQLiteStudio](https://github.com/pawelsalawa/sqlitestudio/releases)
 
 ### Screenshot
