@@ -21,6 +21,10 @@ The program has an alternative command line interface.
     * `apt-get install python-tk` on Debian and its derivatives.
 * A program to view the db file will be helpful. [sqliteonline](https://sqliteonline.com/) or [SQLiteStudio](https://github.com/pawelsalawa/sqlitestudio/releases) both work fine.
 
-## Screenshot
+### Running the program
+
+`python src/main.py`
+
+### Screenshot
 
 ![broken-link](https://github.com/mitchfen/artist-database/blob/master/screenshots/screen1.png)
