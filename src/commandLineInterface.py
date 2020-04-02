@@ -18,23 +18,28 @@ def cmdPromptLoop(connector, cursor):
         print("2) Add a new entry")
         print("3) Remove an entry")
         print("4) Edit an entry")
-        print("5) Exit")
+        print("5) Clear the table")
+        print("6) Exit")
 
         i = int(input("Command: "))
         if i == 1:  printTableToCMD(cursor)
         elif i == 2: addEntryFromCMD(connector)
         elif i == 3: removeEntryFromCMD(connector)
         elif i == 4: editEntryFromCMD(connector)
-        elif i == 5: keepGoing = False
+        elif i == 5: clearTable(connector)
+        elif i == 6: keepGoing = False
 
 # Print the table using tabulate
 def printTableToCMD(cursor):
+
         cursor.execute("SELECT * FROM showTable")
         entries = []
         entries = cursor.fetchall()
         print(tabulate(entries))
 
+# Get user input from CMD, store in database
 def addEntryFromCMD(connector):
+
     artist = input("Artist: ")
     date = input("Date: ")
     venue = input("Venue: ")
@@ -44,6 +49,18 @@ def addEntryFromCMD(connector):
     connector.execute(sql)
     connector.commit()
 
+# Drop and recreate the table to clear it
+def clearTable(connector):
+
+    sql = "DROP TABLE showTable;"
+    connector.execute(sql)
+    connector.commit()
+    connector.execute('''CREATE TABLE IF NOT EXISTS showTable(
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    Artist  CHAR(30),
+    Date CHAR(30),
+    Venue CHAR(30));''')
+    connector.commit()
 
 # TODO
 def removeEntryFromCMD(connector):

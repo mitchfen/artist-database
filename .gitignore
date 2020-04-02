@@ -1,3 +1,2 @@
-Shows.db
-backup.db
-__pycache__
+/src/Shows.db
+/src/__pycache__
