@@ -52,15 +52,26 @@ def addEntryFromCMD(connector):
 # Drop and recreate the table to clear it
 def clearTable(connector):
 
-    sql = "DROP TABLE showTable;"
-    connector.execute(sql)
-    connector.commit()
-    connector.execute('''CREATE TABLE IF NOT EXISTS showTable(
-    ID INTEGER PRIMARY KEY AUTOINCREMENT,
-    Artist  CHAR(30),
-    Date CHAR(30),
-    Venue CHAR(30));''')
-    connector.commit()
+    checkIfSure = input("Are you sure? (yes or no)")
+    keepGoing = True
+    while(keepGoing):
+        if checkIfSure == "yes": 
+            sql = "DROP TABLE showTable;"
+            connector.execute(sql)
+            connector.commit()
+            connector.execute('''CREATE TABLE IF NOT EXISTS showTable(
+            ID INTEGER PRIMARY KEY AUTOINCREMENT,
+            Artist  CHAR(30),
+            Date CHAR(30),
+            Venue CHAR(30));''')
+            connector.commit()
+            keepGoing = False
+        elif checkIfSure == "no":
+            keepGoing = False
+            return
+        else:
+            checkIfSure = input("invalid input, please enter \"yes\" or \"no\"")
+            
 
 # TODO
 def removeEntryFromCMD(connector):

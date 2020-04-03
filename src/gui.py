@@ -7,24 +7,24 @@ from commandLineInterface import printTableToCMD
 # Create all the GUI elements, and handle button clicks
 def buildGUI(connector, cursor):
 
+    # Main Tkinter window
     mainWindow = tk.Tk()
     mainWindow.geometry("500x500")
     mainWindow.resizable(0,0)
-
     mainWindow.title("Artist-Database-helper")
 
+    # Labels and text entry boxes
     artistLabel = Label(mainWindow, text="Artist:")
     artistEntry = Entry(mainWindow, width=100, borderwidth=0)
-
     dateLabel = Label(mainWindow, text="Date:", )
     dateEntry = Entry(mainWindow, width=100, borderwidth=0)
-
     venueLabel = Label(mainWindow, text="Venue:")
     venueEntry = Entry(mainWindow, width=100, borderwidth=0)
 
+    # Button objects
     addButton = Button(mainWindow, text="Add", command=lambda: addEntryFromGUI(connector, artistEntry, dateEntry, venueEntry))
     editButton = Button(mainWindow, text="Edit", command=lambda: editEntryFromGUI())
-    clearButton = Button(mainWindow, text="Clear the table", command=lambda: clearTable(connector))
+    clearButton = Button(mainWindow, text="Clear the table", command=lambda: clearTable(connector, mainWindow))
 
     artistLabel.grid(sticky= W, row=0, column=0)
     artistEntry.grid(row=1, column=0)
@@ -52,17 +52,26 @@ def addEntryFromGUI(connector, artistEntry, dateEntry, venueEntry):
     connector.commit()
 
 # Clear the table by dropping and rebuilding it
-def clearTable(connector):
+def clearTable(connector, mainWindow):
 
-    sql = "DROP TABLE showTable;"
-    connector.execute(sql)
-    connector.commit()
-    connector.execute('''CREATE TABLE IF NOT EXISTS showTable(
-    ID INTEGER PRIMARY KEY AUTOINCREMENT,
-    Artist  CHAR(30),
-    Date CHAR(30),
-    Venue CHAR(30));''')
-    connector.commit()
+    # Bring up a new window to confirm clearing the table
+    popupWindow = tk.Toplevel(mainWindow)
+    confirmClear = Button(popupWindow, text="Confirm clear", command=lambda: clearConfirmed(connector, popupWindow))
+    confirmClear.grid(sticky = W, row = 0, column = 0)
+
+    # Actually send SQL command to clear table
+    def clearConfirmed(connector, popupWindow):
+        sql = "DROP TABLE showTable;"
+        connector.execute(sql)
+        connector.commit()
+        connector.execute('''CREATE TABLE IF NOT EXISTS showTable(
+        ID INTEGER PRIMARY KEY AUTOINCREMENT,
+        Artist  CHAR(30),
+        Date CHAR(30),
+        Venue CHAR(30));''')
+        connector.commit()
+        popupWindow.destroy()
+    
 
 # TODO
 def removeEntryFromGUI():
