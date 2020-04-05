@@ -28,5 +28,5 @@ The program has an alternative command line interface.
 ### Screens
 <p float="left">
     <img src="https://github.com/mitchfen/artist-database/blob/master/screenshots/screen1.png" width=300" />
-    <img src="https://github.com/mitchfen/artist-database/blob/master/screenshots/screen2.png" width=300" />
+    <img src="https://github.com/mitchfen/artist-database/blob/master/screenshots/screen2.png" width=500" />
 </p>
