@@ -13,10 +13,15 @@ The program has an alternative command line interface.
 ## Screens
 
 Main window  
-![image1 not found](https://github.com/mitchfen/artist-database/blob/master/screenshots/screen1.png")  
+![image1 not found](https://github.com/mitchfen/artist-database/blob/master/screenshots/screen1.png)  
 
+<<<<<<< HEAD
 View table screen
 ![image2 not found]("https://github.com/mitchfen/artist-database/blob/master/screenshots/screen2.png")
+=======
+View table screen  
+![image2 not found](https://github.com/mitchfen/artist-database/blob/master/screenshots/screen2.png)
+>>>>>>> 6f6b4ee43e1b8393b793912ba069aa0c0e36ff8b
 
 
 ## Dependencies
