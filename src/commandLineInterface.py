@@ -44,6 +44,8 @@ def addEntryFromCMD(connector):
     date = input("Date: ")
     venue = input("Venue: ")
 
+    # TODO: Use regex or some method to validate date format
+
     sql = "INSERT INTO showTable (ID, Artist, Date, Venue)\nValues(NULL, '" + artist + "', '" + date + "', '" + venue + "') "
 
     connector.execute(sql)
