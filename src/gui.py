@@ -60,8 +60,6 @@ def addEntryFromGUI(connector, artistEntry, dateEntry, venueEntry):
     date = dateEntry.get()
     venue = venueEntry.get()
 
-    # TODO: Use regex or some method to validate date format
-
     # Enter into table
     sql = "INSERT INTO showTable (ID, Artist, Date, Venue)\nValues(NULL, '" + artist + "', '" + date + "', '" + venue + "') "
     connector.execute(sql)
@@ -78,7 +76,6 @@ def clearTable(connector, mainWindow):
     # Bring up a new window to confirm clearing the table
     popupWindow = tk.Toplevel(mainWindow)
     popupWindow.resizable(0,0)
-    #popupWindow.geometry("100x20")
     popupWindow.title("Confirm")
     popupWindow.configure(background = "#44475a")
 
@@ -111,7 +108,6 @@ def viewTable(mainWindow, cursor):
     cursor.execute("SELECT * FROM showTable")
     entries = []
     entries = cursor.fetchall()
-    print(entries)
     
     tempList = [['Test', 'Test'], ['Test2', 'Test2'], ['Test3', 'Test3'], ['Test4', 'Test4']]
 
@@ -128,9 +124,9 @@ def viewTable(mainWindow, cursor):
     def close():
         popupWindow.destroy()
 
-    closeButton = tk.Button(popupWindow, text="Close", width=15, command=close)
+    closeButton = tk.Button(popupWindow, bg = "#ff5555", bd = "0", activebackground = "#f1fa8c", text="Close", width=15, command=close)
     closeButton.grid(sticky = W, row=4, column=0)
-    printButton = tk.Button(popupWindow, text="Print", width=15, command=close)
+    printButton = tk.Button(popupWindow, bg = "#8be9fd", bd = "0", activebackground = "#f1fa8c", text="Print", width=15, command=close)
     printButton.grid(sticky = E, row=4, column=1)
 
 def closeMainWindow(mainWindow):
