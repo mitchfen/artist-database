@@ -1,15 +1,39 @@
 import sqlite3
 from sqlite3 import Error
-
 import tkinter as tk
 from tkinter import ttk
 from tkinter import *
-
 from tabulate import tabulate
+
+def main():
+    
+    # Connect to the SQL Shows.db file and create the only table
+    try :
+        connector = sqlite3.connect('Shows.db')
+    except Error as e:
+        print(e)
+
+    connector.execute('''CREATE TABLE IF NOT EXISTS showTable(
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    Artist  CHAR(30),
+    Date CHAR(30),
+    Venue CHAR(30));''')
+    connector.commit()
+
+    cursor = connector.cursor()
+
+    # Build the graphical user interface
+    buildGUI(connector, cursor)
+
+    # Commented out the command line interface now that the GUI is working
+    #cmdPromptLoop(connector, cursor)
+
+    # Close SQLite connector before exit
+    connector.close()
 
 ####################################################
 #
-#       COMMAND LINE CODE
+#       COMMAND LINE INTERFACE
 #
 ####################################################
 
@@ -90,7 +114,7 @@ def editEntryFromCMD(connector):
 
 ####################################################
 #
-#       GUI CODE
+#       GUI INTERFACE
 #
 ####################################################
 
@@ -184,7 +208,6 @@ def clearTable(connector, mainWindow):
         connector.commit()
         popupWindow.destroy()
     
-# TODO
 def viewTable(mainWindow, cursor):
     
     # New popup to display the table
@@ -216,46 +239,25 @@ def viewTable(mainWindow, cursor):
         listBox.heading(col, text=col)    
     listBox.grid(row=0, column=0, columnspan=2)
 
-
     # Function called by close button
     def closeViewTable():
         popupWindow.destroy()
 
+    # Function called by print button
+    # TODO
+    def printViewTable():
+        return
+
     # Buttons at the bottom of the view page
     closeButton = tk.Button(popupWindow, bg = "#ff5555", bd = "0", activebackground = "#f1fa8c", text="Close", width=15, command=closeViewTable)
     closeButton.grid(sticky = W, row=4, column=0)
-    printButton = tk.Button(popupWindow, bg = "#8be9fd", bd = "0", activebackground = "#f1fa8c", text="Print", width=15, command=closeViewTable)
+    printButton = tk.Button(popupWindow, bg = "#8be9fd", bd = "0", activebackground = "#f1fa8c", text="Print", width=15, command=printViewTable)
     printButton.grid(sticky = E, row=4, column=1)
+
+
 
 def closeMainWindow(mainWindow):
     mainWindow.destroy()
 
-####################################################
-#
-#       CONTROL FLOW STARTS HERE
-#
-####################################################
-
-# Connect to the SQL Shows.db file and create the only table
-try :
-    connector = sqlite3.connect('Shows.db')
-except Error as e:
-    print(e)
-
-connector.execute('''CREATE TABLE IF NOT EXISTS showTable(
-ID INTEGER PRIMARY KEY AUTOINCREMENT,
-Artist  CHAR(30),
-Date CHAR(30),
-Venue CHAR(30));''')
-connector.commit()
-
-cursor = connector.cursor()
-
-# Build the graphical user interface
-buildGUI(connector, cursor)
-
-# Commented out the command line interface now that the GUI is working
-#cmdPromptLoop(connector, cursor)
-
-# Close SQLite connector before exit
-connector.close()
+if __name__ == '__main__':
+    main()

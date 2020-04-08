@@ -32,4 +32,8 @@ View table screen
 
 Run the commmand `python main.py`  
 
+### TODO
+
+* Add method to remove entry from table by clicking it
+* Write print functionality
 
