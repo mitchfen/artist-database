@@ -1,14 +1,7 @@
-import sqlite3
-from sqlite3 import Error
 import tkinter as tk
 from tkinter import ttk
 from tkinter import *
 
-####################################################
-#
-#       GUI INTERFACE
-#
-####################################################
 
 # Create all the GUI elements, and handle button clicks
 def buildGUI(DAO):

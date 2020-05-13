@@ -1,12 +1,5 @@
-import sqlite3
-from sqlite3 import Error
 from tabulate import tabulate
 
-####################################################
-#
-#       COMMAND LINE INTERFACE
-#
-####################################################
 
 # Main program loop, where user input is accepted
 def cmdPromptLoop(DAO):

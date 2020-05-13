@@ -1,7 +1,7 @@
-# Import my own modules
 import gui
 import cli
 import mitchDAO
+
 
 def main():
     
