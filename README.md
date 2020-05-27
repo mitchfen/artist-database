@@ -22,12 +22,13 @@ View table screen
 ### Dependencies
 
 * You need [sqlite3](https://sqlite.org/download.html) on your machine.
-* If you are on Linux you may need to install Tkinter manually.
-    * `pacman -S python-pmw` on Arch/Manjaro.
-    * `apt-get install python-tk` on Debian and its derivatives.
-* Tabulate python module: `pip install tabulate`
+
+* Tabulate python module: `pip3 install tabulate`
+* Tkinter python module: `pip3 install tkinter`
+    * If you are using Linux you may need to install Tkinter manually.
+        * `sudo apt-get install python3-tk` on Debian and its derivatives.
 * You may want a program to view the db file but it is not required. I like [sqliteonline.com](https://sqliteonline.com/) and [SQLiteStudio](https://github.com/pawelsalawa/sqlitestudio/releases).
 
 ### Running the program
 
- Run the commmand `python .\src\main.py`
+ Run the commmand `python3 .\src\main.py`
