@@ -1,6 +1,6 @@
 
 # Artist Database Builder
-[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/mitchfen/Aerist_Database_Builder/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/mitchfen/Artist_Database_Builder.svg)](https://github.com/mitchfen/Aerist_Database_Builder/blob/master/LICENSE)
 ### Overview
 
 I go to a lot of concerts, and was having trouble keeping track of who I have/haven't seen. I need a solution that allows me to select all the artists I have seen at a given venue, year, etc.  
