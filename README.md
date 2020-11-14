@@ -12,23 +12,18 @@ The program has an alternative command line interface and works on Windows 10 an
 
 ### Running the program
 
- Run the commmand `python3 .\src\main.py`
+`python .\src\main.py` or download the release
 
-### Screens
-
-**Main window**  
-![image1 not found](https://github.com/mitchfen/artist-database/blob/master/screenshots/screen1.png)  
-
-**View table screen**  
-![image2 not found](https://github.com/mitchfen/artist-database/blob/master/screenshots/screen2.png)
+### Screenshot
+![image not found](./screenshots/screen3.png)  
 
 
 ### Dependencies
 
-* You need [sqlite3](https://sqlite.org/download.html) on your machine.
+* Python 3
 
-* Tabulate python module: `pip3 install tabulate`
-* Tkinter python module: `pip3 install tkinter`
-    * If you are using Linux you may need to install Tkinter manually.
-        * `sudo apt-get install python3-tk` on Debian and its derivatives.
+* You need [SQLite3](https://sqlite.org/download.html) on your machine.
+
+* [Tabulate Python module](https://github.com/astanin/python-tabulate) - which is licensed under the MIT license.  
+`pip install tabulate`
 * You may want a program to view the db file but it is not required. I like [sqliteonline.com](https://sqliteonline.com/) and [SQLiteStudio](https://github.com/pawelsalawa/sqlitestudio/releases).
