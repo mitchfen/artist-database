@@ -24,6 +24,6 @@ The program has an alternative command line interface and works on Windows 10 an
 
 * You need [SQLite3](https://sqlite.org/download.html) on your machine.
 
-* [Tabulate Python module](https://github.com/astanin/python-tabulate) - which is licensed under the MIT license.  
+* [Tabulate Python module](https://github.com/astanin/python-tabulate) - which is distributed under the MIT license.  
 `pip install tabulate`
 * You may want a program to view the db file but it is not required. I like [sqliteonline.com](https://sqliteonline.com/) and [SQLiteStudio](https://github.com/pawelsalawa/sqlitestudio/releases).
