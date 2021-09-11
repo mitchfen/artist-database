@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=waving&color=3a78ac&height=130&section=header&text=Python%20Concert%20Tracker&fontSize=30&rotate=+0&fontAlign=30&fontAlignY=35)
+# Concert tracker
 
 [![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=Python&logoColor=white)]()
 [![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=SQLite&logoColor=white)]()
