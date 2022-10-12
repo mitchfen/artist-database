@@ -11,7 +11,7 @@ def buildGUI(DAO):
     mainWindow.configure(background = "#44475a")
     #mainWindow.geometry("400x200")
     mainWindow.resizable(0,0)
-    mainWindow.title("Artist-DB Helper")
+    mainWindow.title("concert-tracker-gui")
 
     # Labels and text entry boxes
     artistLabel = Label(mainWindow, bg="#44475a", fg="#f8f8f2", text="Artist:")
